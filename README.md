@@ -50,8 +50,10 @@ Load localization strings in AppDelegate __application:didFinishLaunchingWithOpt
 
 &nbsp;
 
+```objective-c
 	NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
 	[MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
+```
 
 In UIViewController you want to localize, collect all the localization code in a dedicated function:
 
