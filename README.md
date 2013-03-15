@@ -46,14 +46,14 @@ Localization language will be set and a __MCLocalizationLanguageDidChangeNotific
 
 For using MCLocalization, I recommend this pattern:
 
-1. Load localization strings in AppDelegate __application:didFinishLaunchingWithOptions:__:
+Load localization strings in AppDelegate __application:didFinishLaunchingWithOptions:__:
 
 &nbsp;
 
 	NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
 	[MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
 
-2. In UIViewController you want to localize, collect all the localization code in a dedicated function:
+In UIViewController you want to localize, collect all the localization code in a dedicated function:
 
 &nbsp;
 
@@ -63,7 +63,7 @@ For using MCLocalization, I recommend this pattern:
 	    _messageLabel.text = [MCLocalization stringForKey:@"message"];
 	}
 
-3. Call that function from the __viewDidLoad__ and add view controller as an observer for the __MCLocalizationLanguageDidChangeNotification__:
+Call that function from the __viewDidLoad__ and add view controller as an observer for the __MCLocalizationLanguageDidChangeNotification__:
 
 &nbsp;
 
