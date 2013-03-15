@@ -2,6 +2,14 @@
 
 Set of tools to simplify "on the fly" localization in iOS apps.
 
+## Reasons
+
+There is the "standard" way Apple of localizing iOS apps using  __NSLocalizedString__. It's versatile enought and you should stick to it unless you have good reasons not to.
+
+I reuse the same localization files in an iOS app, on a web site and, possibly, in an app made for another platform. Advantage of JSON there is that libraries for handling JSON are available for just about any modern platform.
+
+As a side advantage, it is much easier to create tools which do not rely on localizers being proficient with escaping C strings or use translation services not geared towards iOS app localization.
+
 ## File format
 
 MCLocalization uses strings files in JSON format. Internally, it is a collection of collections of strings. Here's an example from the sample project:  
