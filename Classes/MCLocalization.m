@@ -131,4 +131,40 @@
     return [[MCLocalization sharedInstance] stringForKey:key];
 }
 
++ (NSString *)stringForKey:(NSString *)key withPlaceholders:(NSDictionary *)placeholders
+{
+    return [[MCLocalization sharedInstance] stringForKey:key withPlaceholders:placeholders];
+}
+
+- (NSString *)stringForKey:(NSString *)key withPlaceholders:(NSDictionary *)placeholders
+{
+    NSString * string = [self stringForKey:key];
+    NSError *e;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"%\\w+%"
+                                                                           options:0
+                                                                             error:&e];
+    
+    NSArray *matches = [regex matchesInString:string
+                                      options:0
+                                        range:NSMakeRange(0, [string length])];
+    
+    if (matches) {
+        for (NSTextCheckingResult *match in matches) {
+            NSRange matchRange = [match range];
+            NSString *placeholderKey = [string substringWithRange:matchRange];
+            
+            NSString *placeholderValue = (NSString *) [placeholders objectForKey:placeholderKey];
+            
+            if (!placeholderValue) {
+                NSLog(@"MCLocalization: no value for placeholder %@ for key %@ in language %@", placeholderKey, key, self.language);
+            }
+            
+            string = [string stringByReplacingOccurrencesOfString:placeholderKey withString:placeholderValue];
+        }
+    }
+    
+    return string;
+    
+}
+
 @end
