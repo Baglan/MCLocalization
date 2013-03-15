@@ -29,7 +29,7 @@
 {
     _greetingLabel.text = [MCLocalization stringForKey:@"greeting"];
     _messageLabel.text = [MCLocalization stringForKey:@"message"];
-    _messageLabel.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
+    _placeholderLabel.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
 }
 
 - (IBAction)switchToRussian:(id)sender
