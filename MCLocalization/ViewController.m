@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "MCLocalization.h"
 
 @interface ViewController ()
 
@@ -18,12 +19,26 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localize) name:MCLocalizationLanguageDidChangeNotification object:nil];
+    
+    [self localize];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)localize
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _greetingLabel.text = [MCLocalization stringForKey:@"greeting"];
+    _messageLabel.text = [MCLocalization stringForKey:@"message"];
+}
+
+- (IBAction)switchToRussian:(id)sender
+{
+    [MCLocalization sharedInstance].language = @"ru";
+}
+
+- (IBAction)switchToEnglish:(id)sender
+{
+    [MCLocalization sharedInstance].language = @"en";
 }
 
 @end

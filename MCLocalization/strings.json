@@ -1,0 +1,10 @@
+{
+    "en": {
+        "greeting": "Hello!",
+        "message": "Tap on the buttons below to switch languages"
+    },
+    "ru": {
+        "greeting": "Привет!",
+        "message": "Нажимайте на кнопки для смены языка"
+    }
+}

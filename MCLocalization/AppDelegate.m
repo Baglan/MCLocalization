@@ -7,13 +7,16 @@
 //
 
 #import "AppDelegate.h"
-
 #import "ViewController.h"
+#import "MCLocalization.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
+    [MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
