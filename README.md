@@ -17,15 +17,17 @@ MCLocalization uses strings files in JSON format. Internally, it is a collection
 	{
 	    "en": {
 	        "greeting": "Hello!",
-	        "message": "Tap on the buttons below to switch languages"
+	        "message": "Tap on the buttons below to switch languages",
+          	"glory": "Glory Glory, %name%!"
 	    },
 	    "ru": {
 	        "greeting": "Привет!",
-	        "message": "Нажимайте на кнопки для смены языка"
+	        "message": "Нажимайте на кнопки для смены языка",
+          	"glory": "Славься славься, %name%!"
 	    }
 	}
 	
-Collection of strings for each language is referenced by a  canonicalized IETF BCP 47 language identifier (the same identifier used in NSLocale). Strings in a collection are further identified by keys.
+Collection of strings for each language is referenced by a canonicalized IETF BCP 47 language identifier (the same identifier used in NSLocale). Strings in a collection are further identified by keys.
 
 ## Installation
 
@@ -46,6 +48,12 @@ Here's how you fetch a localized string:
 
 ```objective-c	
 _label.text = [MCLocalization stringForKey:@"greeting"];
+```
+
+And this is how you fetch localized string with placeholders:
+
+```objective-c  
+_labelPlaceholders.text = [MCLocalization stringForKey:@"key" withPlaceholders:@{@"%foo%":@"bar"}];
 ```
 
 MCLocalization was designed to aid "instant" localization so that app's UI could update right after, user updates the language setting. To update the localization language, set it like this:
@@ -74,6 +82,7 @@ In UIViewController you want to localize, collect all the localization code in a
 {
     _greetingLabel.text = [MCLocalization stringForKey:@"greeting"];
     _messageLabel.text = [MCLocalization stringForKey:@"message"];
+    _labelPlaceholders.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
 }
 ```
 

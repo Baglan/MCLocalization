@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController {
     __weak IBOutlet UILabel *_greetingLabel;
     __weak IBOutlet UILabel *_messageLabel;
+    __weak IBOutlet UILabel *_placeholderLabel;
 }
 
 - (IBAction)switchToRussian:(id)sender;

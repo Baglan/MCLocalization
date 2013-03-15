@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString * systemLanguage;
 
 + (NSString *)stringForKey:(NSString *)key;
++ (NSString *)stringForKey:(NSString *)key withPlaceholders:(NSDictionary *)placeholders;
 + (MCLocalization *)sharedInstance;
 
 + (void)loadFromJSONFile:(NSString *)fileName defaultLanguage:(NSString *)defaultLanguage;
