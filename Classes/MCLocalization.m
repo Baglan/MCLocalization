@@ -139,8 +139,10 @@
 - (NSString *)stringForKey:(NSString *)key withPlaceholders:(NSDictionary *)placeholders
 {
     NSString * string = [self stringForKey:key];
+    NSString *result = string;
+    
     NSError *e;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"%\\w+%"
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"%([a-zA-Z0-9]+?)%"
                                                                            options:0
                                                                              error:&e];
     
@@ -148,8 +150,9 @@
                                       options:0
                                         range:NSMakeRange(0, [string length])];
     
-    if (matches) {
+    if (!e && matches) {
         for (NSTextCheckingResult *match in matches) {
+            
             NSRange matchRange = [match range];
             NSString *placeholderKey = [string substringWithRange:matchRange];
             
@@ -159,11 +162,11 @@
                 NSLog(@"MCLocalization: no value for placeholder %@ for key %@ in language %@", placeholderKey, key, self.language);
             }
             
-            string = [string stringByReplacingOccurrencesOfString:placeholderKey withString:placeholderValue];
+            result = [result stringByReplacingOccurrencesOfString:placeholderKey withString:placeholderValue];
         }
     }
     
-    return string;
+    return result;
     
 }
 
