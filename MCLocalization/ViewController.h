@@ -12,6 +12,7 @@
     __weak IBOutlet UILabel *_greetingLabel;
     __weak IBOutlet UILabel *_messageLabel;
     __weak IBOutlet UILabel *_placeholderLabel;
+    __weak IBOutlet UILabel *_mustacheLabel;
 }
 
 - (IBAction)switchToRussian:(id)sender;

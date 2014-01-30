@@ -18,12 +18,16 @@ MCLocalization uses strings files in JSON format. Internally, it is a collection
 	    "en": {
 	        "greeting": "Hello!",
 	        "message": "Tap on the buttons below to switch languages",
-          	"glory": "Glory Glory, %name%!"
+          	"glory": "Glory Glory, %name%!",
+            "mustache": "mustache",
+            "lovely-mustache": "What a wonderful {{mustache}} you have!"
 	    },
 	    "ru": {
 	        "greeting": "Привет!",
 	        "message": "Нажимайте на кнопки для смены языка",
-          	"glory": "Славься славься, %name%!"
+          	"glory": "Славься славься, %name%!",
+            "mustache": "усы",
+            "lovely-mustache": "Какие замечательные у Вас {{mustache}}!"
 	    }
 	}
 	
@@ -50,13 +54,14 @@ Here's how you fetch a localized string:
 _label.text = [MCLocalization stringForKey:@"greeting"];
 ```
 
-And this is how you fetch localized string with placeholders:
+Here is how you use placeholders:
 
-```objective-c  
-_labelPlaceholders.text = [MCLocalization stringForKey:@"key" withPlaceholders:@{@"%foo%":@"bar"}];
+```objective-c
+// Given the "key": "%a% {{b}} [c]", the following call will return "A B C"
+[MCLocalization stringForKey:@"key" withPlaceholders:@{@"%a%":@"A", @"{{b}}":@"B"}, @"[c]":@"C"];
 ```
 
-MCLocalization was designed to aid "instant" localization so that app's UI could update right after, user updates the language setting. To update the localization language, set it like this:
+MCLocalization was designed to aid "instant" localization so that app's UI could update right after user updates the language setting. To update the localization language, set it like this:
 
 ```objective-c
 [MCLocalization sharedInstance].language = @"ru";
@@ -83,6 +88,7 @@ In UIViewController you want to localize, collect all the localization code in a
     _greetingLabel.text = [MCLocalization stringForKey:@"greeting"];
     _messageLabel.text = [MCLocalization stringForKey:@"message"];
     _labelPlaceholders.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
+    _mustacheLabel.text = [MCLocalization stringForKey:@"lovely-mustache" withPlaceholders:@{@"{{mustache}}":[MCLocalization stringForKey:@"mustache"]}];
 }
 ```
 

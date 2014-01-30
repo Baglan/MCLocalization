@@ -30,6 +30,7 @@
     _greetingLabel.text = [MCLocalization stringForKey:@"greeting"];
     _messageLabel.text = [MCLocalization stringForKey:@"message"];
     _placeholderLabel.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
+    _mustacheLabel.text = [MCLocalization stringForKey:@"lovely-mustache" withPlaceholders:@{@"{{mustache}}":[MCLocalization stringForKey:@"mustache"]}];
 }
 
 - (IBAction)switchToRussian:(id)sender
