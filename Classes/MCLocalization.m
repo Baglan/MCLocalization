@@ -10,10 +10,15 @@
 
 #define MCLOCALIZATION_PREFERRED_LOCALE_KEY @"MCLOCALIZATION_PREFERRED_LOCALE_KEY"
 
+@interface MCLocalization ()
+
+@property (nonatomic, retain) NSDictionary *strings;
+@property (nonatomic, retain) NSString *defaultLanguage;
+
+@end
+
 @implementation MCLocalization {
     NSString * _language;
-    NSDictionary * _strings;
-    NSString * _defaultLanguage;
 }
 
 // Singleton
@@ -33,12 +38,12 @@
 
 - (void)loadFromJSONFile:(NSString *)fileName defaultLanguage:(NSString *)defaultLanguage
 {
-    _strings = nil;
-    
+    self.strings = nil;
+
     NSData * JSONData = [NSData dataWithContentsOfFile:fileName];
-    _strings = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
-    
-    _defaultLanguage = defaultLanguage;
+    self.strings = [NSJSONSerialization JSONObjectWithData:JSONData options:0 error:nil];
+
+    self.defaultLanguage = defaultLanguage;
 }
 
 + (void)loadFromJSONFile:(NSString *)fileName defaultLanguage:(NSString *)defaultLanguage
@@ -51,7 +56,7 @@
 
 - (NSArray *)supportedLanguages
 {
-    return [_strings allKeys];
+    return [self.strings allKeys];
 }
 
 #pragma mark -
@@ -72,7 +77,7 @@
     
     // In the worst case, return default setting
     if (language == nil) {
-        language = _defaultLanguage;
+        language = self.defaultLanguage;
     }
     
     return language;
@@ -113,7 +118,7 @@
 
 - (NSString *)stringForKey:(NSString *)key language:(NSString *)language
 {
-    NSDictionary * langugeStrings = _strings[language];
+    NSDictionary * langugeStrings = self.strings[language];
     NSString * string = langugeStrings[key];
 #if DEBUG
     if (!string) {
