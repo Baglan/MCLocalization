@@ -19,15 +19,15 @@ MCLocalization uses strings files in JSON format. Internally, it is a collection
 	        "greeting": "Hello!",
 	        "message": "Tap on the buttons below to switch languages",
           	"glory": "Glory Glory, %name%!",
-                "mustache": "mustache",
-                "lovely-mustache": "What a wonderful {{mustache}} you have!"
+            "mustache": "mustache",
+            "lovely-mustache": "What a wonderful {{mustache}} you have!"
 	    },
 	    "ru": {
 	        "greeting": "Привет!",
 	        "message": "Нажимайте на кнопки для смены языка",
           	"glory": "Славься славься, %name%!",
-                "mustache": "усы",
-                "lovely-mustache": "Какие замечательные у Вас {{mustache}}!"
+            "mustache": "усы",
+            "lovely-mustache": "Какие замечательные у Вас {{mustache}}!"
 	    }
 	}
 	
