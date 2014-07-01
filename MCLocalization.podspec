@@ -16,7 +16,7 @@ As a side advantage, it is much easier to create tools which do not rely on loca
   s.homepage     = "https://github.com/Baglan/MCLocalization"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author             = { "Baglan Dosmagambetov" => "baglan.dos@gmail.com" }
-  s.social_media_url = "http://twitter.com/baglan"
+  s.social_media_url = "https://twitter.com/baglan"
   s.platform     = :ios
   s.source       = { :git => "https://github.com/Baglan/MCLocalization.git", :tag => "1.0.1" }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
