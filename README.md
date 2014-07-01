@@ -43,7 +43,7 @@ Initialize localization by loading strings:
 
 ```objective-c	
 NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
-   [MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
+[MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
 ```
 
 MCLocalization will try to determine the best mathing language based on device's language preferences, defaultLanguage prameter is a "fall-through" setting in case there is no match.
