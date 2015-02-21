@@ -31,6 +31,8 @@
     _messageLabel.text = [MCLocalization stringForKey:@"message"];
     _placeholderLabel.text = [MCLocalization stringForKey:@"glory" withPlaceholders:@{@"%name%":@"Man United"}];
     _mustacheLabel.text = [MCLocalization stringForKey:@"lovely-mustache" withPlaceholders:@{@"{{mustache}}":[MCLocalization stringForKey:@"mustache"]}];
+
+    NSLog(@"--- %@", [MCLocalization stringForKey:@"non-existing-key"]);
 }
 
 - (IBAction)switchToRussian:(id)sender

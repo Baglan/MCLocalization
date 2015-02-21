@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MCLocalization"
-  s.version      = "1.0.1"
+  s.version      = "1.1"
   s.summary      = "Set of tools to simplify \"on the fly\" localization in iOS apps."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ As a side advantage, it is much easier to create tools which do not rely on loca
   s.author             = { "Baglan Dosmagambetov" => "baglan.dos@gmail.com" }
   s.social_media_url = "https://twitter.com/baglan"
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/Baglan/MCLocalization.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/Baglan/MCLocalization.git", :tag => "1.1" }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
   s.requires_arc = true

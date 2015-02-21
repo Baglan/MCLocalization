@@ -30,6 +30,16 @@ MCLocalization uses strings files in JSON format. Internally, it is a collection
             "lovely-mustache": "Какие замечательные у Вас {{mustache}}!"
 	    }
 	}
+
+In case of using multiple JSON files, one for each individual language, file should contain strings for only that language:
+
+    {
+        "greeting": "Hello!",
+        "message": "Tap on the buttons below to switch languages",
+        "glory": "Glory Glory, %name%!",
+        "mustache": "mustache",
+        "lovely-mustache": "What a wonderful {{mustache}} you have!"
+    }
 	
 Collection of strings for each language is referenced by a canonicalized IETF BCP 47 language identifier (the same identifier used in NSLocale). Strings in a collection are further identified by keys.
 
@@ -41,10 +51,29 @@ Add files from the 'Classes' folder to your project.
 
 Initialize localization by loading strings:
 
+Using a single JSON file:
+
+```objective-c	
+[MCLocalization loadFromURL:[[NSBundle mainBundle] URLForResource:@"strings.json" withExtension:nil] defaultLanguage:@"en"];
+```
+
+Using multiple JSON files, one for each language:
+
+```objective-c	
+NSDictionary * languageURLPairs = @{
+    @"en":[[NSBundle mainBundle] URLForResource:@"en.json" withExtension:nil],
+    @"ru":[[NSBundle mainBundle] URLForResource:@"ru.json" withExtension:nil],
+};
+[MCLocalization loadFromLanguageURLPairs:languageURLPairs defaultLanguage:@"en"];
+```
+
+Legacy way using a file path:
+
 ```objective-c	
 NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
 [MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
 ```
+
 
 MCLocalization will try to determine the best mathing language based on device's language preferences, defaultLanguage prameter is a "fall-through" setting in case there is no match.
 
@@ -98,6 +127,16 @@ Call that function from the __viewDidLoad__ and add view controller as an observ
 [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localize) name:MCLocalizationLanguageDidChangeNotification object:nil];
 [self localize];
 ```
+
+## Handling missing localization
+
+By default, localized string for a missing key will be __nil__. __noKeyPlaceholder__ text can be set instead:
+
+```objective-c
+[MCLocalization sharedInstance].noKeyPlaceholder = @"[No '{key}' in '{language}']";
+```
+
+__{key}__ and __{language}__ placeholders will be replaced with corresponding settings.
 
 ## License
 

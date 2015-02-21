@@ -21,6 +21,11 @@
 		867226AF16F1EFF900CAC625 /* MCLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 867226AE16F1EFF900CAC625 /* MCLocalization.m */; };
 		867226B116F21F9B00CAC625 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 867226B016F21F9B00CAC625 /* README.md */; };
 		867226B316F229C600CAC625 /* strings.json in Resources */ = {isa = PBXBuildFile; fileRef = 867226B216F229C600CAC625 /* strings.json */; };
+		867AADD01A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AADCF1A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.m */; };
+		867AADD41A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AADD31A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.m */; };
+		867AADD71A980E5F00094122 /* MCLocalizationDummyDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 867AADD61A980E5F00094122 /* MCLocalizationDummyDataSource.m */; };
+		867AADDA1A981E7500094122 /* ru.json in Resources */ = {isa = PBXBuildFile; fileRef = 867AADD81A981E7500094122 /* ru.json */; };
+		867AADDB1A981E7500094122 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 867AADD91A981E7500094122 /* en.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,15 @@
 		867226AE16F1EFF900CAC625 /* MCLocalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCLocalization.m; path = Classes/MCLocalization.m; sourceTree = "<group>"; };
 		867226B016F21F9B00CAC625 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		867226B216F229C600CAC625 /* strings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = strings.json; sourceTree = "<group>"; };
+		867AADCE1A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCLocalizationSingleJSONFileDataSource.h; path = Classes/MCLocalizationSingleJSONFileDataSource.h; sourceTree = "<group>"; };
+		867AADCF1A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCLocalizationSingleJSONFileDataSource.m; path = Classes/MCLocalizationSingleJSONFileDataSource.m; sourceTree = "<group>"; };
+		867AADD11A98001900094122 /* MCLocalizationDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MCLocalizationDataSource.h; path = Classes/MCLocalizationDataSource.h; sourceTree = "<group>"; };
+		867AADD21A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCLocalizationOneJSONFilePerLanguageDataSource.h; path = Classes/MCLocalizationOneJSONFilePerLanguageDataSource.h; sourceTree = "<group>"; };
+		867AADD31A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCLocalizationOneJSONFilePerLanguageDataSource.m; path = Classes/MCLocalizationOneJSONFilePerLanguageDataSource.m; sourceTree = "<group>"; };
+		867AADD51A980E5F00094122 /* MCLocalizationDummyDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCLocalizationDummyDataSource.h; path = Classes/MCLocalizationDummyDataSource.h; sourceTree = "<group>"; };
+		867AADD61A980E5F00094122 /* MCLocalizationDummyDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCLocalizationDummyDataSource.m; path = Classes/MCLocalizationDummyDataSource.m; sourceTree = "<group>"; };
+		867AADD81A981E7500094122 /* ru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ru.json; sourceTree = "<group>"; };
+		867AADD91A981E7500094122 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +106,8 @@
 		8672268B16F1CC0D00CAC625 /* MCLocalization */ = {
 			isa = PBXGroup;
 			children = (
+				867AADD81A981E7500094122 /* ru.json */,
+				867AADD91A981E7500094122 /* en.json */,
 				867226B216F229C600CAC625 /* strings.json */,
 				8672269416F1CC0D00CAC625 /* AppDelegate.h */,
 				8672269516F1CC0D00CAC625 /* AppDelegate.m */,
@@ -122,6 +138,13 @@
 			children = (
 				867226AD16F1EFF900CAC625 /* MCLocalization.h */,
 				867226AE16F1EFF900CAC625 /* MCLocalization.m */,
+				867AADD11A98001900094122 /* MCLocalizationDataSource.h */,
+				867AADD51A980E5F00094122 /* MCLocalizationDummyDataSource.h */,
+				867AADD61A980E5F00094122 /* MCLocalizationDummyDataSource.m */,
+				867AADCE1A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.h */,
+				867AADCF1A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.m */,
+				867AADD21A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.h */,
+				867AADD31A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -177,12 +200,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867AADDB1A981E7500094122 /* en.json in Resources */,
 				8672269016F1CC0D00CAC625 /* InfoPlist.strings in Resources */,
 				8672269816F1CC0D00CAC625 /* Default.png in Resources */,
 				8672269A16F1CC0D00CAC625 /* Default@2x.png in Resources */,
 				8672269C16F1CC0D00CAC625 /* Default-568h@2x.png in Resources */,
 				867226A216F1CC0D00CAC625 /* ViewController.xib in Resources */,
 				867226B116F21F9B00CAC625 /* README.md in Resources */,
+				867AADDA1A981E7500094122 /* ru.json in Resources */,
 				867226B316F229C600CAC625 /* strings.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,8 +221,11 @@
 			files = (
 				8672269216F1CC0D00CAC625 /* main.m in Sources */,
 				8672269616F1CC0D00CAC625 /* AppDelegate.m in Sources */,
+				867AADD01A97FFD900094122 /* MCLocalizationSingleJSONFileDataSource.m in Sources */,
 				8672269F16F1CC0D00CAC625 /* ViewController.m in Sources */,
+				867AADD41A9809B400094122 /* MCLocalizationOneJSONFilePerLanguageDataSource.m in Sources */,
 				867226AF16F1EFF900CAC625 /* MCLocalization.m in Sources */,
+				867AADD71A980E5F00094122 /* MCLocalizationDummyDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +348,7 @@
 				867226A716F1CC0D00CAC625 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

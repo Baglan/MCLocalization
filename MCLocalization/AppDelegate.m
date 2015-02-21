@@ -14,8 +14,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString * path = [[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil];
-    [MCLocalization loadFromJSONFile:path defaultLanguage:@"en"];
+    // Using a file path:
+    // [MCLocalization loadFromJSONFile:[[NSBundle mainBundle] pathForResource:@"strings.json" ofType:nil] defaultLanguage:@"en"];
+    
+    // Using a file URL:
+    // [MCLocalization loadFromURL:[[NSBundle mainBundle] URLForResource:@"strings.json" withExtension:nil] defaultLanguage:@"en"];
+    
+    // Using a file per one individual language:
+    NSDictionary * languageURLPairs = @{
+                                        @"en":[[NSBundle mainBundle] URLForResource:@"en.json" withExtension:nil],
+                                        @"ru":[[NSBundle mainBundle] URLForResource:@"ru.json" withExtension:nil],
+                                        };
+    [MCLocalization loadFromLanguageURLPairs:languageURLPairs defaultLanguage:@"en"];
+    
+    [MCLocalization sharedInstance].noKeyPlaceholder = @"[No '{key}' in '{language}']";
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
