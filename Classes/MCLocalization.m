@@ -150,7 +150,8 @@
 - (NSString *)stringForKey:(NSString *)key language:(NSString *)language
 {
     NSDictionary * langugeStrings = [self stringsForLanguage:language];
-    NSString * string = langugeStrings[key];
+    // Avoid null values that will cause crashes (E.g. Trying to set the text of a label)
+    NSString * string = (![langugeStrings[key] isEqual:[NSNull null]]) ? langugeStrings[key] : nil;
 
     if (!string) {
         if (self.noKeyPlaceholder) {
@@ -184,6 +185,12 @@
 - (NSString *)stringForKey:(NSString *)localizationKey withPlaceholders:(NSDictionary *)placeholders
 {
     __block NSString * result = [self stringForKey:localizationKey];
+    
+    // Check that result exists before trying to replace occurrences
+    if (!result) {
+        return nil;
+    }
+    
     [placeholders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([key isKindOfClass:NSString.class] && [obj isKindOfClass:NSString.class]) {
             result = [result stringByReplacingOccurrencesOfString:key withString:obj];
