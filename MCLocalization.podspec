@@ -18,7 +18,7 @@ As a side advantage, it is much easier to create tools which do not rely on loca
   s.author             = { "Baglan Dosmagambetov" => "baglan.dos@gmail.com" }
   s.social_media_url = "https://twitter.com/baglan"
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/Baglan/MCLocalization.git", :tag => "1.1.2" }
+  s.source       = { :git => "https://github.com/Baglan/MCLocalization.git", :tag => "1.1.3" }
   s.source_files  = 'Classes', 'Classes/**/*.{h,m}'
   s.exclude_files = 'Classes/Exclude'
   s.requires_arc = true
