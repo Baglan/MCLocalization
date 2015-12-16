@@ -87,23 +87,14 @@
 
 - (NSString *)sanitizeLanguage:(NSString *)language
 {
-    NSString * sanitizedLanguage = nil;
-    
-    // Use supplied language if supported
-    if ([self.supportedLanguages indexOfObject:language] != NSNotFound) {
-        sanitizedLanguage = language;
-    } else {
-        // If not, try to figure out language from preferred languages
-        NSArray *preferredLanguages = [NSLocale preferredLanguages];
-        sanitizedLanguage = [preferredLanguages firstObjectCommonWithArray:self.supportedLanguages];
+    NSMutableArray * preferences = [NSMutableArray new];
+    if (language) {
+        [preferences addObject:language];
     }
-    
-    // If language could not be figured out, use the default language
-    if (!sanitizedLanguage) {
-        sanitizedLanguage = [self.dataSource defaultLanguage];
+    if (self.dataSource) {
+        [preferences addObject:[self.dataSource defaultLanguage]];
     }
-    
-    return sanitizedLanguage;
+    return [NSBundle preferredLocalizationsFromArray:self.supportedLanguages forPreferences:preferences].firstObject;
 }
 
 - (NSString *)language
