@@ -91,6 +91,7 @@
     if (language) {
         [preferences addObject:language];
     }
+    [preferences addObjectsFromArray:[NSLocale preferredLanguages]];
     if (self.dataSource) {
         [preferences addObject:[self.dataSource defaultLanguage]];
     }
