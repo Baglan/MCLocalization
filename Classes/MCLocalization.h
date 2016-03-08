@@ -31,10 +31,11 @@
 + (void)loadFromURL:(NSURL *)JSONFileURL defaultLanguage:(NSString *)defaultLanguage;
 + (void)loadFromLanguageURLPairs:(NSDictionary *)languageURLPairs defaultLanguage:(NSString *)defaultLanguage;
 
+- (void)reloadStrings;
+
 // Methods exposed for extending purposes
 - (NSDictionary *)stringsForLanguage:(NSString *)language;
 - (NSString *)stringForKey:(NSString *)key language:(NSString *)language;
-
 
 // Legacy methods
 + (void)loadFromJSONFile:(NSString *)fileName defaultLanguage:(NSString *)defaultLanguage;

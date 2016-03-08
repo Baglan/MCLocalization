@@ -55,7 +55,7 @@
 - (void)setDataSource:(id<MCLocalizationDataSource>)dataSource
 {
     _dataSource = dataSource;
-    _cachedStrings = nil;
+    [self reloadStrings];
 }
 
 #pragma mark - Loading
@@ -117,11 +117,11 @@
         // Check if new setting is supported by localization
         if ([self.supportedLanguages indexOfObject:sanitizedLanguage] != NSNotFound) {
             _language = [sanitizedLanguage copy];
-            _cachedStrings = [self.dataSource stringsForLanguage:_language];
-            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MCLocalizationLanguageDidChangeNotification object:nil]];
         } else {
             _language = nil;
         }
+        
+        [self reloadStrings];
         
         [[NSUserDefaults standardUserDefaults] setObject:_language forKey:MCLOCALIZATION_PREFERRED_LOCALE_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -129,6 +129,17 @@
 }
 
 #pragma mark - Strings
+
+- (void)reloadStrings
+{
+    _cachedStrings = nil;
+    
+    if (_language && _dataSource && [_dataSource.supportedLanguages indexOfObject:_language] != NSNotFound ) {
+        _cachedStrings = [_dataSource stringsForLanguage:_language];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:MCLocalizationLanguageDidChangeNotification object:nil]];
+}
 
 - (NSDictionary *)stringsForLanguage:(NSString *)language
 {
