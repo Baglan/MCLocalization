@@ -23,4 +23,5 @@ As a side advantage, it is much easier to create tools which do not rely on loca
   s.exclude_files = 'Classes/Exclude'
   s.requires_arc = true
   s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '2.0'
 end
